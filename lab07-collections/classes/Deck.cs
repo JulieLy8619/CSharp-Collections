@@ -7,7 +7,7 @@ namespace lab07_collections.classes
 {
     public class Deck<T> : IEnumerable<T>
     {
-        T[] items = new T[52];
+        public T[] items = new T[52];
         public int Counter { get; set; }
 
 
