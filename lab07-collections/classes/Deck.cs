@@ -13,7 +13,7 @@ namespace lab07_collections.classes
 
         public void AddCard(T input)
         {
-            if (Counter > items.Length -1)
+            if (Counter == items.Length )
             {
                 Array.Resize(ref items, items.Length * 2);
             }
@@ -21,9 +21,25 @@ namespace lab07_collections.classes
             Count();
         }
 
-        public void Remove()
+        public void Remove(T removeItem)
         {
-            Console.WriteLine("will figure out what to do later");
+            //amanda said think of how we removed a word in lab 3
+            T[] temp = new T[Counter - 1];
+            int tempCounter = 0;
+            foreach (T card in items)
+            {
+                if (card != null)
+                {
+                    if (!card.Equals(removeItem))
+                    {
+                        temp[tempCounter] = card;
+                        tempCounter++;
+                    }
+                }
+            }
+            items = temp;
+            Counter--;
+
         }
 
         public void Count()

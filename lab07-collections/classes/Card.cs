@@ -13,7 +13,7 @@ namespace lab07_collections.classes
     };
     public enum CardsOptions
     {
-        Ace,
+        Ace = 1,
         Two,
         Three,
         Four,

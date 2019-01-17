@@ -24,6 +24,19 @@ namespace lab07_collections
             myDeck.AddCard(twoSpades);
             myDeck.AddCard(threeSpades);
             //myDeck.AddCard(fourHearts); //so have even number for tests
+
+
+            //could have written as 
+            //Deck<Card> myDeck = new Deck<Card>()
+            //{
+            //    aHeart,
+            //    jDiamonds,
+            //    twoSpades,
+            //    threeSpades
+
+            //}
+
+
             int numOfCardsInDeck = myDeck.Counter;
             Console.WriteLine("numOfCardsInDeck " + numOfCardsInDeck);
             int numForPlayers = numOfCardsInDeck / 2;
@@ -81,5 +94,18 @@ namespace lab07_collections
             Console.WriteLine();
             Console.ReadLine(); //to stop it from suto closing
         } 
+
+        static void RevmoveSpecificCard(CardsOptions cardOpt, Suits suit, Deck<Card> deck )
+        {
+            Card remove = null;
+            foreach (Card card in deck)
+                {
+                if (card.CardNumber == cardOpt && card.CardSuit == suit)
+                {
+                    remove = card;
+                    deck.Remove(remove);
+                }
+            }
+        }
     }
 }

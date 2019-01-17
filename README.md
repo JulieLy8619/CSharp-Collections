@@ -23,6 +23,6 @@ Proof tests work
 # Collaboration
 
 Tyler Hood helped me with my Card class (mostly that I cannot enum 1 2 3 etc and to spell it out), chatted about enumerator, and helped with how I instatiate my Card class
-
+Amanda Iverson walked us through the remove in class
 
 
