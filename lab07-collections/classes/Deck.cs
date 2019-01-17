@@ -21,7 +21,12 @@ namespace lab07_collections.classes
 
         public void Remove()
         {
+            Console.WriteLine("will figure out what to do later");
+        }
 
+        public void Count()
+        {
+            Console.WriteLine("will figure out what to do later");
         }
         public IEnumerator<T> GetEnumerator()
         {
