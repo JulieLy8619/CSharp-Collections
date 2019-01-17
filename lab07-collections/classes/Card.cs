@@ -4,17 +4,40 @@ using System.Text;
 
 namespace lab07_collections.classes
 {
+    public enum Suits
+    {
+        Hearts, 
+        Spades,
+        Diamonds,
+        Clubs
+    };
+    public enum CardsOptions
+    {
+        Ace,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King
+    };
     public class Card //so I can test
     {
-        public string CardNumber { get; set; }
-        public string CardSuit { get; set; }
+        public CardsOptions CardNumber { get; set; }
+        public Suits CardSuit { get; set; }
 
-        enum Suits
+        public Card(CardsOptions cardNum, Suits suitNum)
         {
-            Hearts, 
-            Spades,
-            Diamonds,
-            Clubs
-        };
+            CardNumber = cardNum;
+            CardSuit = suitNum;
+
+        }
+
     }
 }
