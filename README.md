@@ -20,5 +20,7 @@ Proof tests work
 
 # Collaboration
 
+Tyler Hood helped me with my Card class (mostly that I cannot enum 1 2 3 etc and to spell it out), and chatted about enumerator
+
 
 

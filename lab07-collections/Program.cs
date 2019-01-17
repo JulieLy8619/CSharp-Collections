@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab07_collections.classes;
+using System;
 
 namespace lab07_collections
 {
@@ -6,7 +7,11 @@ namespace lab07_collections
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Deck<Card> myDeck = new Deck<Card>();
+            foreach(Card card in myDeck)
+            {
+                Console.WriteLine(card);
+            }
         }
     }
 }
