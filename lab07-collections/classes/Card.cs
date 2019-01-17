@@ -8,5 +8,13 @@ namespace lab07_collections.classes
     {
         public string CardNumber { get; set; }
         public string CardSuit { get; set; }
+
+        enum Suits
+        {
+            Hearts, 
+            Spades,
+            Diamonds,
+            Clubs
+        };
     }
 }
