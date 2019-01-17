@@ -2,6 +2,7 @@
 tell them what it is (with context, provide a summary)
 show them what it looks like in action (Visuals)
 show them how they use it (Step by step directions, “Happy Path” walk through)
+	Julie 1-16-19: currently no action from user, it just runs
 tell them any other relevant details 
 -->
 
