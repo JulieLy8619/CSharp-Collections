@@ -6,5 +6,6 @@ namespace lab07_collections.inferfaces
 {
     interface IEnumerate
     {
+        
     }
 }
