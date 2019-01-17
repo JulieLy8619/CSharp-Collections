@@ -8,15 +8,17 @@ namespace lab07_collections.classes
     public class Deck<T> : IEnumerable<T>
     {
         T[] items = new T[52];
-        int currInd = 0;
+        public int Counter { get; set; }
+
+
         public void AddCard(T input)
         {
-            if (currInd > items.Length -1)
+            if (Counter > items.Length -1)
             {
                 Array.Resize(ref items, items.Length * 2);
             }
-            items[currInd] = input;
-            currInd++;
+            items[Counter] = input;
+            Count();
         }
 
         public void Remove()
@@ -26,11 +28,11 @@ namespace lab07_collections.classes
 
         public void Count()
         {
-            Console.WriteLine("will figure out what to do later");
+            Counter++;
         }
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < currInd; i++)
+            for (int i = 0; i < Counter; i++)
             {
                 yield return items[i];
 
