@@ -15,10 +15,11 @@ We are tasked with creating a custom generic collection that is used to simulate
 
 # Solution
 What it looks like in the console if all goes right
-![HappyPath](./images/lab07proofoflife.JPG)
+![HappyPathPart1](./images/lab07proofoflife1.JPG)
+![HappyPathPart2](./images/lab07proofoflife2.JPG)
 
 Proof tests work
-
+![tests](./images/lab07proofoftests.JPG)
 
 # Collaboration
 

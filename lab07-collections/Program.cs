@@ -143,10 +143,6 @@ namespace lab07_collections
                     remove = card;
                     deck.Remove(remove);
                 }
-                else
-                {
-                    Console.WriteLine($"Card {cardOpt} of {suit} isn't in the deck");
-                }
             }
         }
     }
