@@ -3,7 +3,7 @@ using System;
 
 namespace lab07_collections
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -49,7 +49,7 @@ namespace lab07_collections
             Console.WriteLine();
 
             Console.WriteLine("Removing Two of Spades");
-            RevmoveSpecificCard(CardsOptions.Two, Suits.Spades, myDeck);
+            RemoveSpecificCard(CardsOptions.Two, Suits.Spades, myDeck);
             Console.WriteLine();
             Console.WriteLine($"The cards remaining in the deck: ({myDeck.Counter})");
             foreach (Card card in myDeck)
@@ -129,7 +129,7 @@ namespace lab07_collections
         /// <param name="cardOpt">number of the card (like ace, 1, jack, king, etc)</param>
         /// <param name="suit">suit of the card, like spades, diamonds, etc</param>
         /// <param name="deck">the deck we are removing the card from</param>
-        static void RevmoveSpecificCard(CardsOptions cardOpt, Suits suit, Deck<Card> deck )
+        public static void RemoveSpecificCard(CardsOptions cardOpt, Suits suit, Deck<Card> deck )
         {
             Card remove = null;
             foreach (Card card in deck)
