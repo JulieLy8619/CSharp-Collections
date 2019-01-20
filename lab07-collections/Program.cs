@@ -3,14 +3,18 @@ using System;
 
 namespace lab07_collections
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Deal();
+            Console.ReadLine(); //to stop it from auto closing
 
         }
 
+        /// <summary>
+        /// this is the whole game. Making a deck, adding and removing from it, dividing it among the hands (player1 player2 and dealer), and printing it to the screen
+        /// </summary>
         public static void Deal()
         {
             Deck<Card> myDeck = new Deck<Card>();
@@ -19,67 +23,127 @@ namespace lab07_collections
             Card twoSpades = new Card(CardsOptions.Two, Suits.Spades);
             Card threeSpades = new Card(CardsOptions.Three, Suits.Spades);
             Card fourHearts = new Card(CardsOptions.Four, Suits.Hearts);
+            Card fiveHearts = new Card(CardsOptions.Five, Suits.Hearts);
+            Card qDiamonds = new Card(CardsOptions.Queen, Suits.Diamonds);
+            Card qHearts = new Card(CardsOptions.Queen, Suits.Hearts);
+            Card eightDiamonds = new Card(CardsOptions.Eight, Suits.Diamonds);
+            Card nineClubs = new Card(CardsOptions.Nine, Suits.Clubs);
+            Card sixSpades = new Card(CardsOptions.Six, Suits.Spades);
             myDeck.AddCard(aHeart);
             myDeck.AddCard(jDiamonds);
             myDeck.AddCard(twoSpades);
             myDeck.AddCard(threeSpades);
-            //myDeck.AddCard(fourHearts); //so have even number for tests
-            int numOfCardsInDeck = myDeck.Counter;
-            Console.WriteLine("numOfCardsInDeck " + numOfCardsInDeck);
-            int numForPlayers = numOfCardsInDeck / 2;
-            Console.WriteLine("numForPlayers " + numForPlayers);
-            Card[] Player1 = new Card[numForPlayers];
-            Card[] Player2 = new Card[numForPlayers];
-            int dealerHand = numOfCardsInDeck % 2;
-            Card[] Dealer = new Card[dealerHand];
+            myDeck.AddCard(fourHearts);
+            myDeck.AddCard(fiveHearts);
+            myDeck.AddCard(qDiamonds);
+            myDeck.AddCard(qHearts);
+            myDeck.AddCard(eightDiamonds);
+            myDeck.AddCard(nineClubs);
+            myDeck.AddCard(sixSpades);
 
-            //just to see all in the deck
-            Console.WriteLine("All the cards");
+            Console.WriteLine("The cards in the deck: ");
+            foreach (Card card in myDeck)
+            {
+                Console.WriteLine($"{card.CardNumber} of {card.CardSuit}, ");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Removing Two of Spades");
+            RemoveSpecificCard(CardsOptions.Two, Suits.Spades, myDeck);
+            Console.WriteLine();
+            Console.WriteLine($"The cards remaining in the deck: ({myDeck.Counter})");
             foreach (Card card in myDeck)
             {
                 Console.WriteLine($"{card.CardNumber} of {card.CardSuit} ");
             }
             Console.WriteLine();
 
-            Console.WriteLine("Player One's Hand");
-            for (int i = 0; i < numForPlayers; i++)
+            Console.WriteLine("Start of game: ");
+            Console.WriteLine("Player One's Hand: Empty");
+            Console.WriteLine("Player Two's Hand: Empty");
+            Console.WriteLine($"Dealers's Hand: {myDeck.Counter}");
+            foreach (Card card in myDeck)
             {
-                Player1[i] = myDeck.items[i];
+                Console.WriteLine($"{card.CardNumber} of {card.CardSuit}, ");
             }
+            Console.WriteLine();
+
+            int numForPlayers = myDeck.Counter / 2;
+            Card[] Player1 = new Card[numForPlayers];
+            Card[] Player2 = new Card[numForPlayers];
+            int dealerHand = myDeck.Counter % 2;
+            Card[] Dealer = new Card[dealerHand];
+            int cardHandCounter = 0;
+            int p1HandCounter = 0;
+            int p2HandCounter = 0;
+
+            if (dealerHand == 0)
+            {
+                do
+                {
+                    Player1[p1HandCounter] = myDeck.items[cardHandCounter];
+                    cardHandCounter++;
+                    p1HandCounter++;
+                    Player2[p2HandCounter] = myDeck.items[cardHandCounter];
+                    cardHandCounter++;
+                    p2HandCounter++;
+                } while (cardHandCounter < myDeck.Counter);
+            }
+            else
+            {
+                do
+                {
+                    Player1[p1HandCounter] = myDeck.items[cardHandCounter];
+                    cardHandCounter++;
+                    p1HandCounter++;
+                    Player2[p2HandCounter] = myDeck.items[cardHandCounter];
+                    cardHandCounter++;
+                    p2HandCounter++;
+                } while (cardHandCounter < myDeck.Counter-1);
+                Dealer[0] = myDeck.items[cardHandCounter]; //because dealers hand will only be 0 or 1 currently
+            }
+
+
+            Console.WriteLine("Player One's Hand");
             foreach (Card card in Player1)
             {
                 Console.WriteLine($"{card.CardNumber} of {card.CardSuit} ");
             }
             Console.WriteLine();
-
             Console.WriteLine("Player Two's Hand");
-            int indexP2 = 0;
-            for (int j = 0; j < numForPlayers; j++)
-            {
-                //Console.WriteLine("numForPlayers in J LOOP " + numForPlayers);
-                //Console.WriteLine("numForPlayers + j " + numForPlayers + j);
-                indexP2 = numForPlayers + j;
-                Player2[j] = myDeck.items[indexP2]; //because I already took the first half for player 1
-            }
             foreach (Card card in Player2)
             {
                 Console.WriteLine($"{card.CardNumber} of {card.CardSuit} ");
             }
             Console.WriteLine();
-
             Console.WriteLine("Dealers's Hand");
-            int indexDealer = 0;
-            for (int p = 0; p < dealerHand; p++)
-            {
-                indexDealer = (numForPlayers * 2) + p;
-                Dealer[p] = myDeck.items[indexDealer]; //because I already took the first half for player 1
-            }
             foreach (Card card in Dealer)
             {
                 Console.WriteLine($"{card.CardNumber} of {card.CardSuit} ");
             }
-            Console.WriteLine();
-            Console.ReadLine(); //to stop it from suto closing
-        } 
+        }
+
+        /// <summary>
+        /// removes a specific card from the deck
+        /// </summary>
+        /// <param name="cardOpt">number of the card (like ace, 1, jack, king, etc)</param>
+        /// <param name="suit">suit of the card, like spades, diamonds, etc</param>
+        /// <param name="deck">the deck we are removing the card from</param>
+        public static void RemoveSpecificCard(CardsOptions cardOpt, Suits suit, Deck<Card> deck )
+        {
+            Card remove = null;
+            foreach (Card card in deck)
+                {
+                if (deck == null)
+                {
+                    Console.WriteLine("The deck is empty");
+                }
+                else if (card.CardNumber == cardOpt && card.CardSuit == suit)
+                {
+                    remove = card;
+                    deck.Remove(remove);
+                }
+            }
+        }
     }
 }
