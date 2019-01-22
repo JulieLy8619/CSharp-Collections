@@ -10,7 +10,10 @@ namespace lab07_collections.classes
         public T[] items = new T[52];
         public int Counter { get; set; }
 
-
+        /// <summary>
+        /// adds a card to the collection (at the end of the array), and will increase the array size as needed.
+        /// </summary>
+        /// <param name="input">object to add to the collection</param>
         public void AddCard(T input)
         {
             if (Counter == items.Length )
@@ -21,6 +24,10 @@ namespace lab07_collections.classes
             Count();
         }
 
+        /// <summary>
+        /// removes an object from the collection
+        /// </summary>
+        /// <param name="removeItem">which object to remove</param>
         public void Remove(T removeItem)
         {
             //amanda said think of how we removed a word in lab 3
@@ -42,10 +49,18 @@ namespace lab07_collections.classes
 
         }
 
+        /// <summary>
+        /// keeps count of how many objects are in the collection
+        /// </summary>
         public void Count()
         {
             Counter++;
         }
+
+        /// <summary>
+        /// allows us to use FOREACH in our program
+        /// </summary>
+        /// <returns>the object in the collection</returns>
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 0; i < Counter; i++)
@@ -55,6 +70,10 @@ namespace lab07_collections.classes
             }
         }
 
+        /// <summary>
+        /// outdated function that calls GetEnumerator
+        /// </summary>
+        /// <returns>the new method</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
